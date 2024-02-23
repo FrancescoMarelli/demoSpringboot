@@ -13,8 +13,8 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,33 +27,19 @@
                 <a class="nav-item nav-link disabled" href="#">Disabled</a>
             </div>
         </div>
-        </div>
-    </nav>
+    </div>
+</nav>
 
 <div class="container">
     <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 th:text="${post.title}" class="display-4">Hello, world!</h1>
+        <p th:text="${post.content}"  class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p th:text="${post.date}" >It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </p>
     </div>
 </div>
-    <div class="container">
-        <div class="row">
-            <div th:each="post : ${posts}" class="col-3">
-                <div class="card" style="width: 18rem;">
-                    <img th:src="${post.urlImage}" class="card-img-top" src="../static/img/foto1.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 th:text="${post.title}" class="card-title">Card title</h5>
-                        <p th:text="${post.content}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a th:href="@{/home/post?id=} + ${post.id}" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
