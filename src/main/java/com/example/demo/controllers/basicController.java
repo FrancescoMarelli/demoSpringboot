@@ -5,6 +5,7 @@ import com.example.demo.model.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,7 +39,7 @@ public class basicController {
         return "index";
     }
 
-    @GetMapping(path = {"/post"})
+/*    @GetMapping(path = {"/post"})
     public ModelAndView getPost(@RequestParam(defaultValue = "1", name = "id", required = false) int id) {
         ModelAndView mv = new ModelAndView(Paginas.POST);
         List<Post> postFiltered = this.getPosts().stream()
@@ -46,7 +47,17 @@ public class basicController {
                                     }).collect(Collectors.toList());
         mv.addObject("post", postFiltered.get(0));
         return mv;
-        }
+    }*/
+
+    @GetMapping(path = {"/post", "/post/p/{post}"})
+    public ModelAndView getPost2(@PathVariable(required = false, name="post") int id) {
+        ModelAndView mv = new ModelAndView(Paginas.POST);
+        List<Post> postFiltered = this.getPosts().stream()
+                .filter((p) ->  { return p.getId() == id;
+                }).collect(Collectors.toList());
+        mv.addObject("post", postFiltered.get(0));
+        return mv;
+    }
 
 
 }
