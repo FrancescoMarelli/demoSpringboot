@@ -38,7 +38,7 @@ public class basicController {
         model.addAttribute("posts", this.getPosts());
         return "index";
     }
-
+    // Uncomment to use the pathvariable method
 /*    @GetMapping(path = {"/post"})
     public ModelAndView getPost(@RequestParam(defaultValue = "1", name = "id", required = false) int id) {
         ModelAndView mv = new ModelAndView(Paginas.POST);
@@ -49,8 +49,10 @@ public class basicController {
         return mv;
     }*/
 
+    //
     @GetMapping(path = {"/post", "/post/p/{post}"})
-    public ModelAndView getPost2(@PathVariable(required = false, name="post") int id) {
+    public ModelAndView getPost(@RequestParam(defaultValue = "1", name = "id", required = false) int id,
+                                @PathVariable(required = true, name="post") int id_path) {
         ModelAndView mv = new ModelAndView(Paginas.POST);
         List<Post> postFiltered = this.getPosts().stream()
                 .filter((p) ->  { return p.getId() == id;
