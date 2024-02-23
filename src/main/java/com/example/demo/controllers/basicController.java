@@ -4,10 +4,7 @@ import com.example.demo.configuration.Paginas;
 import com.example.demo.model.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -59,6 +56,19 @@ public class basicController {
                 }).collect(Collectors.toList());
         mv.addObject("post", postFiltered.get(0));
         return mv;
+    }
+
+    @GetMapping("/postNew")
+    public ModelAndView getForm() {
+        return new ModelAndView(Paginas.FORM).addObject("post", new Post());
+    }
+
+    @PostMapping("/addNewPost")
+    public String addNewPost(Post post, Model model) {
+        List<Post> posts = this.getPosts();
+        posts.add(post);
+        model.addAttribute("posts", posts);
+        return "index";
     }
 
 
