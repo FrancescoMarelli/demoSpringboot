@@ -61,3 +61,22 @@ Spring + Servidor Web Embedded (TomCat) - XML = SPRINGBOOT
 
 **Inyección de dependencias**
 Inyectar con constructores todas las dependencias que necesiten. Ayuda a descoplar componentes de la clase usando abstracciones y no implementaciones. Se suele trabajar con fabricas.
+
+**Top Annotations**
+1) @Component -> diciendo a string que esta clase es un bean, una componente de la aplicacion que tiene que ser manejada por el contenedor de spring. 
+2) Todas anotan clases como componentes pero tienen un significado mas especifico, @StereoTypes: (MVC Framework)
+   @Controller -> Controlador de la aplicacion web, maneja las peticiones HTTP
+   @Service -> Servicio de la aplicacion, Logica de negocio
+   @Repository -> Repositorio de la aplicacion, Datos
+3) @Autowired -> activa la inyeccion de dependencias de spring de forma automatica y elegante.
+4) @Value -> inyecta valores de propiedades de un archivo de configuracion
+5) @Configuration
+6) @Bean
+7) @Transactional
+   
+11) @Scope -> Cuando usamos Patrones de diseño, Singleton. @Scope("singleton") -> usamos memoria estatica y se comparte entre todos los objetos, nunca va a 
+haber ese dato duplicado. no va a haber más de uno. @Scope("prototype") -> Cada vez que se inyecta un objeto, se crea un nuevo objeto, cuando necesitamos clonar objetos.
+scopeName= es para guardar en memoria cache, session, request, etc.
+
+**DataBase JDBC**
+Modulo de Springboot que nos permite conectarnos a cualquier tipo bases de datos relacionales.
